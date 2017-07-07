@@ -25,7 +25,10 @@ import { MessagingModule } from './messaging/messaging.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<IAppState>){
-    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  constructor(
+    ngRedux: NgRedux<IAppState>,
+    devTools: DevToolsExtension
+  ) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE, [], [devTools.enhancer()]);
   }
  }
